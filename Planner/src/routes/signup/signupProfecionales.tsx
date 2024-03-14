@@ -3,6 +3,7 @@ import DefaultLayout from "../../layout/DefaultLayout";
 import { useAuth } from "../../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../../types/types";
+import '../../css/Signup.css'
 
 export default function Signup() {
     const [name, setName] = useState("");
@@ -73,17 +74,17 @@ export default function Signup() {
     return ( 
         <DefaultLayout>
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Registro</h1>
+                <h1 className="signup-h1">Registro</h1>
                 {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
                 <label>Nombre</label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <input className="input" type="text" value={name} onChange={(e) => setName(e.target.value)} />
                 <label>Apellido</label>
-                <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                <input className="input" type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
                 <label>Fecha de Nacimiento</label>
-                <input type="date" min="1900-01-01" max="2024-01-08" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
+                <input  className="input2" type="date" min="1900-01-01" max="2024-01-08" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
 
                 <label htmlFor="gender">Género</label>
-                    <select id="gender" name="gender" value={gender} onChange={handleGenderChange} required>
+                    <select className="input2" id="gender" name="gender" value={gender} onChange={handleGenderChange} required>
                         <option value="" disabled hidden>Seleccione su género</option>
                         <option value="female">Femenino</option>
                         <option value="male">Masculino</option>
@@ -91,15 +92,15 @@ export default function Signup() {
                     </select>
 
                 <label>Correo</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input className="input" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                 <label>Telefono</label>
-                <input type="tel" value={phone} onChange={handlePhoneChange}  onFocus={handleFocus} />
+                <input className="input2" type="tel" value={phone} onChange={handlePhoneChange}  onFocus={handleFocus} />
 
                 <label>Contraseña</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                <button>Registrarse</button>
+                <button className="signup-button">Registrarse</button>
             </form>;
         </DefaultLayout>
     );

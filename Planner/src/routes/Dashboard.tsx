@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PortalLayout from "../layout/PortalLayout";
+import PortalLayout from "../layout/AdminPortalLayout";
 import { useAuth } from "../auth/AuthProvider";
 import { API_URL } from "../auth/authConstants";
 

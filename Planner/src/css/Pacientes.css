@@ -1,0 +1,54 @@
+.buscar-paciente{
+    margin-left: 50px;
+}
+.input-pacientes{
+    border: solid 3px #edf1fa;
+    border-radius: 10px;
+    text-align: center;
+    height: 34.5px;
+}
+
+.button-pacientes{
+    margin-left: 10px;
+    height: 34.5px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.table-pacientes{
+    margin-top: 20px;
+    margin-left: 50px;
+    border-collapse: collapse;    
+    border-radius: 10px; /* Aplica un radio de borde a la tabla */
+      overflow: hidden; /* Asegura que los bordes redondeados se vean correctamente */ 
+}
+
+.td-campos1{ 
+    height: 70px;
+    width: 230px;
+    border: solid 1px #edf1fa;
+    text-align: left;  
+    padding-left: 10px; 
+    background-color: #edf1fa;
+}   
+
+.td-campos{ 
+    height: 50px;
+    width: 230px;
+    border: solid 1px #edf1fa;
+    text-align: left;  
+    padding-left: 10px; 
+}    
+
+ 
+
+.agendar-button{
+    background-color: #edf1fa;;
+    color: black;
+    
+}
+
+.agendar-button:hover{
+    background-color: #184ffc;
+    color: #ffffff;
+}

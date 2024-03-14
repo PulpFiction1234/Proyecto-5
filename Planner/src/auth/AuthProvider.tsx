@@ -15,7 +15,7 @@ const AuthContext = createContext({
   getUser: () => ({} as User | undefined),
   signout: () => {},
 });
-
+  
 interface AuthProviderProps {
   children: React.ReactNode;
 }
@@ -33,12 +33,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   function saveUser(userData: AuthResponse) {
     setAccessTokenAndRefreshToken(
-      userData.body.accessToken,
-      userData.body.refreshToken
+        userData.body.accessToken,
+        userData.body.refreshToken
     );
     setUser(userData.body.user);
     setIsAuthenticated(true);
-  }
+
+    // Almacenar la información del usuario en el almacenamiento local
+    localStorage.setItem("user", JSON.stringify(userData.body.user));
+}
+  
 
   function setAccessTokenAndRefreshToken(
     accessToken: string,
@@ -72,19 +76,32 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   function getUser(): User | undefined {
+    // Intentar recuperar la información del usuario del almacenamiento local
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+        return JSON.parse(storedUser);
+    }
+    // Si no se encuentra en el almacenamiento local, devolver el estado actual
     return user;
-  }
-
-  function signout() {
-    localStorage.removeItem("token");
-    setAccessToken("");
-    setRefreshToken("");
-    setUser(undefined);
-    setIsAuthenticated(false);
-  }
+}
+function signout() {
+  // Limpiar la información del usuario del almacenamiento local
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  setAccessToken("");
+  setRefreshToken("");
+  setUser(undefined);
+  setIsAuthenticated(false);
+}
 
   async function checkAuth() {
     try {
+      let storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+        setIsAuthenticated(true);
+      }
+  
       if (!!accessToken) {
         //existe access token
         const userInfo = await retrieveUserInfo(accessToken);

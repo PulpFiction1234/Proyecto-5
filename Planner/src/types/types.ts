@@ -1,5 +1,6 @@
 export interface AuthResponse {
   body: {
+    rol: string;
     user: User;
     accessToken: string;
     refreshToken: string;
@@ -16,6 +17,7 @@ export interface User {
   name: string; 
   lastname: string; 
   email: string;
+  phone:string;
   rol: string;
 }
 
@@ -25,4 +27,12 @@ export interface AccessTokenResponse {
     accessToken: string;
   };
   error?: string;
+}
+
+export interface Horario {  
+  fecha: Date; 
+  horaInicio: string;
+  horaFin: string;
+  reservado: boolean; 
+  usuarioReserva?: User;
 }
