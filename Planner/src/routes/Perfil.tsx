@@ -1,6 +1,8 @@
 import { useAuth } from '../auth/AuthProvider'; // Importa el contexto de autenticación
 import AdminPortalLayout from '../layout/AdminPortalLayout';
 import UserPortalLayout from '../layout/UserPortalLayout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import '../css/Perfil.css'
 
 const Perfil = () => {
@@ -14,10 +16,14 @@ const Perfil = () => {
              <div className='div-profile'>
                 <div className='content-profile'>
             <div className='div-profile-2'>
-                <div className='nombre-perfil'>
-                      <p><strong>{user?.name}</strong></p>  
+                <div className='nombre-perfil-icon'>
+                      <FontAwesomeIcon icon={faAddressCard} />
+                    <div className='nombre-perfil'>
+                    <p><strong>{user?.name}</strong></p>  
                       
                       <p style={{marginLeft: '5px'}}><strong>{user?.lastname}</strong></p>
+                    </div>
+
                 </div>
                <div className='info-perfil'>
                 <p><strong>Telefono:</strong> {user?.phone}</p>

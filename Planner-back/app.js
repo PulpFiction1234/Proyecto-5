@@ -32,7 +32,7 @@ app.use('/api/admin/calendario', require('./routes/admin/calendario'));
 app.use("/api/patient/reservation", require('./routes/patient/reservation'));
 
 // Rutas para la autenticación y gestión de sesiones de profesionales
-app.use("/api/signup/signupProfecionales", require("./routes/signup/signupProfecionales"));
+app.use("/api/signup/signupProfecionales", require("./routes/signup/signup"));
 app.use("/api/login", require("./routes/login"));
 app.use("/api/signout", require("./routes/logout"));
 app.use("/api/refresh-token", require("./routes/refreshToken"));

@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./routes/Login.tsx";
-import Signup from "./routes/signup/signupProfecionales.tsx";
+import Signup from "./routes/signup/Signup.tsx";
 import { AuthProvider } from "./auth/AuthProvider.tsx";
 import Dashboard from "./routes/Dashboard.tsx";
-import ProtectedRoute from "./routes/patient/ProtectedRoute.tsx";
+import ProtectedRoute from "./routes/Protected/ProtectedRoute.tsx";
 import "./index.css";
 import Configuraciones from "./routes/Configuraciones.tsx";
 import Soporte from "./routes/Soporte.tsx";
@@ -68,4 +68,4 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
-);
+);  
