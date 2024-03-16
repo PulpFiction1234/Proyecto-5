@@ -5,7 +5,7 @@ import Login from "./routes/Login.tsx";
 import Signup from "./routes/signup/Signup.tsx";
 import { AuthProvider } from "./auth/AuthProvider.tsx";
 import Dashboard from "./routes/Dashboard.tsx";
-import ProtectedRoute from "./routes/Protected/ProtectedRoute.tsx";
+import ProtectedRoute from "./routes/patient/ProtectedRoute.tsx";
 import "./index.css";
 import Configuraciones from "./routes/Configuraciones.tsx";
 import Soporte from "./routes/Soporte.tsx";

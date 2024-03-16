@@ -22,17 +22,13 @@ async function main() {
 }
 
 app.get("/api/user", authenticateToken, (req, res) => {
-  // El middleware authenticateToken ya habrá adjuntado los datos del usuario a req.user
-  // Por lo tanto, puedes devolver los datos del usuario como respuesta
+
   res.json(req.user);
 });
-// Rutas para la gestión de horarios por parte de los administradores
-app.use('/api/admin/calendario', require('./routes/admin/calendario'));
-// Rutas para la visualización y reserva de horarios por parte de los pacientes
-app.use("/api/patient/reservation", require('./routes/patient/reservation'));
 
-// Rutas para la autenticación y gestión de sesiones de profesionales
-app.use("/api/signup/signupProfecionales", require("./routes/signup/signup"));
+app.use('/api/admin/calendario', require('./routes/admin/calendario'));
+
+app.use("/api/signup/signupProfecionales", require("./routes/signup/signupProfecionales"));
 app.use("/api/login", require("./routes/login"));
 app.use("/api/signout", require("./routes/logout"));
 app.use("/api/refresh-token", require("./routes/refreshToken"));

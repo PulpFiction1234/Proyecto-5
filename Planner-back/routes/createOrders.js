@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const paypal = require('@paypal/checkout-server-sdk');
-const { v4: uuidv4 } = require('uuid'); // Importar la función uuidv4 para generar IDs únicos
+const { v4: uuidv4 } = require('uuid'); 
 
 const environment = new paypal.core.SandboxEnvironment(
     'ASfmfanLPf2NnJzI1Dvu6Jga06qNF3gWfNUplgbx3n5QDujKhlHUQ7Ln2bLFR7yHgc7dPP4Bn7MR_1jI',

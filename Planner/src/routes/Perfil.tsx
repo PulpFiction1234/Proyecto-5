@@ -39,16 +39,25 @@ const Perfil = () => {
         </AdminPortalLayout>
       ) : (
         <UserPortalLayout>
-                   <div className='div-profile'>
+                  <div className='div-profile'>
                 <div className='content-profile'>
-                <h2>Perfil de Usuario</h2>
-            <div>
-                <p><strong>Nombre:</strong> {user?.name}</p>
-                <p><strong>Apellido:</strong> {user?.lastname}</p>
+            <div className='div-profile-2'>
+                <div className='nombre-perfil-icon'>
+                      <FontAwesomeIcon icon={faAddressCard} />
+                    <div className='nombre-perfil'>
+                    <p><strong>{user?.name}</strong></p>  
+                      
+                      <p style={{marginLeft: '5px'}}><strong>{user?.lastname}</strong></p>
+                    </div>
+
+                </div>
+               <div className='info-perfil'>
                 <p><strong>Telefono:</strong> {user?.phone}</p>
                 <p><strong>Fecha de nacimiento</strong> {user?.birthdate}</p>
                 <p><strong>Correo Electrónico:</strong> {user?.email}</p>
                 {/* Agrega más campos según sea necesario */}
+               </div>
+                
             </div>
             {/* Agrega formularios de edición si es necesario */}
                 </div>    
