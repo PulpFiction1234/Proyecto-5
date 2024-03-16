@@ -52,6 +52,7 @@ export default function UserPortalLayout({ children }: PortalLayoutProps) {
       <div className="main">
         <div className="sidemenu">
           <p className="icon"><FontAwesomeIcon icon={faCalendarAlt} /> <Link className="icon-text" to="/calendarioPacientes">Calendario</Link></p>
+          <p className="icon"><FontAwesomeIcon icon={faCalendarAlt} /> <Link className="icon-text" to="/Perfil">Perfil</Link></p>
           <p className="icon-bottom1"><FontAwesomeIcon icon={faGear} /> <Link className="icon-text" to="/configuraciones" >Configuraciones</Link> </p>
           <p className="icon-bottom"><FontAwesomeIcon icon={faCircleQuestion} /> <Link className="icon-text" to="/soporte" >Soporte</Link></p>
         </div>

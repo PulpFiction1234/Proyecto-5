@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authenticateToken = require("./auth/authenticateToken");
+
 require("dotenv").config();
 
 process.env.TZ = 'America/Santiago';
@@ -35,7 +36,7 @@ app.use("/api/signup/signupProfecionales", require("./routes/signup/signupProfec
 app.use("/api/login", require("./routes/login"));
 app.use("/api/signout", require("./routes/logout"));
 app.use("/api/refresh-token", require("./routes/refreshToken"));
-
+app.use("/api/create-orders", require ("./routes/createOrders"))
 
 
 

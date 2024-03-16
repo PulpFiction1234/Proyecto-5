@@ -1,3 +1,27 @@
 .reservado {
     background-color: #fffaf6; /* Color de fondo cuando el horario está reservado */
 }
+
+.paypal-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro transparente */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     z-index: 9999;
+}
+
+.paypal-popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra alrededor del contenido */
+    max-width: 80%; /* Ancho máximo del contenido */
+    max-height: 80%;
+    width: 400px;/* Altura máxima del contenido */
+    overflow: auto; /* Permitir desplazamiento si el contenido es demasiado grande */
+}   

@@ -13,6 +13,8 @@ import { CssBaseline } from '@mui/material';
 import CalendarioPaciente from "./components/calendarioPacientes.tsx";
 import CalendarioAdmin from "./components/calendarioAdmin.tsx";
 import HorariosSemanales from "./routes/HorariosSemanales.tsx";
+import Perfil from "./routes/Perfil.tsx";
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/calendarioAdmin",
         element: <CalendarioAdmin/>,
+      },
+      {
+        path: "/Perfil",
+        element: <Perfil />,
       },
       {
         path: "/configuraciones",

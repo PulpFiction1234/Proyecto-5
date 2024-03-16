@@ -43,6 +43,9 @@ const UserSchema = new Schema({
         type: String,
         trim: true
       },
+    profileImage: {
+      type: String, 
+    },
     rut: {
       type: String,
       unique: true,

@@ -18,6 +18,8 @@ export interface User {
   lastname: string; 
   email: string;
   phone:string;
+  birthdate:string;
+  profileImage: string;
   rol: string;
 }
 

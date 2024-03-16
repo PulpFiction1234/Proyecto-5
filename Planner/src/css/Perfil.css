@@ -1,0 +1,36 @@
+.main-content{
+    border-top: #edf1fa solid 40px;
+    border-left: #edf1fa solid 40px;
+    border-top-left-radius: 70px;
+    background-color: #ffffff;
+}
+.main{
+    background-color: #edf1fa;
+}
+
+.nombre-perfil{
+    padding-top: 130px;
+    padding-right: 30px ;
+    display: flex;
+    height: 100%;
+    border-right: #ffffff solid 2px;
+}
+.div-profile{
+    margin-left: 170px;
+    background-color: aliceblue;
+    width: 40%;
+    height: 40%;
+}
+.div-profile-2{
+    display: flex;
+    height: 100%;
+}
+.info-perfil{
+    margin-top: 80px;
+    margin-left: 70px;
+}
+
+.content-profile{
+    margin-left: 50px;
+    height: 100%;
+}

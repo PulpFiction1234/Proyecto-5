@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import UserPortalLayout from '../layout/UserPortalLayout';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import moment from 'moment-timezone';
 import 'moment/locale/es';
+import '../css/CalendarioPacientes.css'
 import { Horario } from '../types/types';
 import { useAuth } from '../auth/AuthProvider'; // Importa el contexto de autenticación
 
@@ -13,8 +15,9 @@ moment.locale('es');
 
 const CalendarioPaciente = () => {
     const auth = useAuth(); // Obtiene el contexto de autenticación
-    
     const [horarios, setHorarios] = useState<Horario[]>([]);
+    const [showPayPalButton, setShowPayPalButton] = useState(false);
+    const [reservationData, setReservationData] = useState<any>(null);
 
     const fetchHorarios = async () => {
         try {
@@ -57,19 +60,28 @@ const CalendarioPaciente = () => {
         const confirmarReserva = window.confirm(confirmMessage);
     
         if (confirmarReserva) {
+            // Solicitar al servidor generar un ID de orden
             try {
-                // Realizar la reserva enviando los datos al servidor
-                await axios.patch('http://localhost:5000/api/admin/calendario', {
-                    fecha,
-                    horaInicio,
-                    horaFin,
-                    usuario // Enviar la información del usuario al backend
+                const response = await axios.post('http://localhost:5000/api/create-orders', {
+                    amount: '10.00' // Ajusta el monto según tus necesidades
                 });
-                // Actualizar la lista de horarios después de la reserva
-                fetchHorarios();
+                const orderId = response.data.orderId;
+                setReservationData({ orderId, fecha, horaInicio, horaFin, usuario });
+                setShowPayPalButton(true);
             } catch (error) {
-                console.error('Error al reservar el horario:', error);
+                console.error('Error al generar el ID de orden:', error);
             }
+        }
+    };
+
+    const onApprove = async (_data: any) => {
+        try {
+            // Realizar la reserva enviando los datos al servidor
+            await axios.patch('http://localhost:5000/api/admin/calendario', reservationData);
+            // Actualizar la lista de horarios después de la reserva
+            fetchHorarios();
+        } catch (error) {
+            console.error('Error al reservar el horario:', error);
         }
     };
 
@@ -134,9 +146,33 @@ const CalendarioPaciente = () => {
                     selectable={true}
                     eventClick={handleEventClick} 
                 />
-            </div>
-        </UserPortalLayout>
-    );
-};
+                  {showPayPalButton && (
+                <div className="paypal-popup">
+                    <div className="paypal-popup-content">
+                        <PayPalScriptProvider options={{ clientId: "ASfmfanLPf2NnJzI1Dvu6Jga06qNF3gWfNUplgbx3n5QDujKhlHUQ7Ln2bLFR7yHgc7dPP4Bn7MR_1jI" }}>
+                            <PayPalButtons
+                                style={{ layout: 'horizontal' }}
+                                createOrder={(_data, actions) => {
+                                    return actions.order.create({
+                                        intent: 'CAPTURE', // Agrega la propiedad intent con el valor 'CAPTURE'
+                                        purchase_units: [{
+                                            amount: {
+                                                value: '10.00', // Ajusta el monto según tus necesidades
+                                                currency_code: 'USD'
+                                            }
+                                        }]
+                                    });
+                                }}
+                                onApprove={onApprove}
+                            />
+                        </PayPalScriptProvider>
+                        <button onClick={() => setShowPayPalButton(false)}>Cerrar</button>
+                    </div>
+                </div>
+            )}
+        </div>
+    </UserPortalLayout>
+);
+};    
 
 export default CalendarioPaciente;

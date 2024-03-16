@@ -1,8 +1,14 @@
-const express = require("express"); const User = require("../schema/user"); const { jsonResponse } = require("../lib/jsonResponse"); const getUserInfo = require("../lib/getUserInfo"); const router = express.Router();
+const express = require("express"); 
+const User = require("../schema/user"); 
+const { jsonResponse } = require("../lib/jsonResponse"); 
+const getUserInfo = require("../lib/getUserInfo"); 
+const router = express.Router();
 
-router.post("/", async function (req, res, next) { const { email, password } = req.body;
+router.post("/", async function (req, res, next) { 
+const { email, password } = req.body;
 
-try { let user = new User(); const userExists = await user.emailExists(email);
+try { let user = new User(); 
+  const userExists = await user.emailExists(email);
 
 if (userExists) {
   user = await User.findOne({ email: email });
